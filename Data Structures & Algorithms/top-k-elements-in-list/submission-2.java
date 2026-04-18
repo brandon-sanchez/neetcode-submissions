@@ -1,0 +1,23 @@
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        PriorityQueue<int[]> heap = new PriorityQueue<>((a,b) -> a[0] - b[0]);
+
+        // Key: Number, Value: count
+        Map<Integer, Integer>  map = new HashMap<>();
+
+        for(int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        for(var entry : count.entrySet()) {
+            heap.offer(new int[] {entry.getValues(), entry.getKeys()});
+        }
+
+        int[] result = new int[k];
+        for(int i = 0; i < k; i++) {
+            result[i] = heap.poll()[1];
+        }
+
+        return result;
+    }
+}
